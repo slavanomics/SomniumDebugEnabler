@@ -8,6 +8,38 @@ using HarmonyLib;
 
 namespace SomniumDebugEnabler
 {
+    [HarmonyPatch(typeof(ScriptManager), "GetLuaFile")]
+    class LuaFile
+    {
+        public static void Prefix(LuaState __instance)
+        {
+            if (DebugEnabler.forceAsset.Value)
+            {
+                Traverse.Create(__instance).Field("useAssetBundle").SetValue(false);
+            }
+        }
+    }
+    [HarmonyPatch(typeof(ScriptManager), "Start")]
+    class LuaOverride
+    {
+        public static void Prefix(LuaState __instance)
+        {
+            if (DebugEnabler.forceAsset.Value)
+            {
+                
+                Traverse.Create(__instance).Field("useAssetBundle").SetValue(false);
+                DebugEnabler.logger.Msg("Asset Bundle False");
+                
+
+            }
+        }
+        public static void Postfix(bool ___useAssetBundle)
+        {
+            DebugEnabler.logger.Msg(___useAssetBundle);
+        }
+    }
+
+
     [HarmonyPatch(typeof(LuaState), "setObject", new Type[] {
     typeof (string), typeof (object), typeof (bool), typeof (bool)
   })]
@@ -79,6 +111,7 @@ namespace SomniumDebugEnabler
         public static MelonPreferences_Entry<int> BUILD_RELEASE;
         public static MelonPreferences_Entry<string> BUILD_REGION;
         public static MelonPreferences_Entry<string> USERNAME;
+        public static MelonPreferences_Entry<bool> forceAsset;
         public static MelonPreferences_Entry<CustomType> Cust;
 
         public class CustomType
@@ -100,6 +133,7 @@ namespace SomniumDebugEnabler
             BUILD_RELEASE = overCat.CreateEntry("BUILD_RELEASE", 0);
             BUILD_REGION = overCat.CreateEntry("BUILD_REGION", "BUILD_WORLDWIDE");
             USERNAME = overCat.CreateEntry("USER_NAME", "gonzo");
+            forceAsset = overCat.CreateEntry("FORCE_ASSET_BUNDLE", true);
             Cust = overCat.CreateEntry<CustomType>("CUSTOM_OVERRIDES",new CustomType());
 
             overCat.SaveToFile();
