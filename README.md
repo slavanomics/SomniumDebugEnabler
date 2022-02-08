@@ -17,7 +17,8 @@ By default, the mod will launch into the debug menu.
 If you'd like to configure the mod more heavily, head to your `AI The Somnium Files\UserData\` folder and open `MelonPreferences.cfg`
 
 By default your file should look like this:
-```[Overrides]
+```TOML
+[Overrides]
 UNITY_EDITOR = 0
 UNITY_STANDALONE_WIN = 1
 UNITY_PS4 = 0
@@ -26,9 +27,13 @@ UNITY_SWITCH = 0
 BUILD_RELEASE = 0
 BUILD_REGION = "BUILD_WORLDWIDE"
 USER_NAME = "gonzo"
+[Overrides.CUSTOM_OVERRIDES]
+custDict = { DEVELOP_MODE = "1" }
 ```
 
 Feel free to experiment with these values, currently the only known values to trigger the debug mode are `BUILD_RELEASE` being set to 0, and `USER_NAME` being set to `"gonzo"`
+
+custDict can be edited to include whatever other variables you want to forcibly inject into the script manager.
 
 ## Credits
 
