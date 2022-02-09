@@ -57,4 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y /d "$(ProjectDir)$(OutDir)$(TargetName).dll" "C:\Program Files (x86)\Steam\steamapps\common\AI The Somnium Files\Mods\$(TargetName).dll"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

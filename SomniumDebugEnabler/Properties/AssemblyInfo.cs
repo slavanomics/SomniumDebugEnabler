@@ -4,7 +4,7 @@ using MelonLoader;
 using SomniumDebugEnabler;
 
 //ml stuff
-[assembly: MelonInfo(typeof(DebugEnabler), "AI: The Somnium Files Debug Mode Enable", "3", "Slavanomics", "https://github.com/slavanomics/SomniumDebugEnabler")]
+[assembly: MelonInfo(typeof(DebugEnabler), "AI: The Somnium Files Debug Mode Enable", "4", "Slavanomics", "https://github.com/slavanomics/SomniumDebugEnabler")]
 [assembly: MelonGame("SpikeChunsoft", "AI_TheSomniumFiles")]
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information

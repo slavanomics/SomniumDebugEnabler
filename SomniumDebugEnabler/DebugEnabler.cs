@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using MelonLoader;
-using Game;
-using SLua;
-using HarmonyLib;
-
-namespace SomniumDebugEnabler
+﻿namespace SomniumDebugEnabler
 {
+    using Game;
+    using HarmonyLib;
+    using MelonLoader;
+    using SLua;
+    using System;
+    using System.Collections.Generic;
+    using System.Reflection.Emit;
+
     [HarmonyPatch(typeof(ScriptManager), "GetLuaFile")]
-    class LuaFile
+    internal class LuaFile
     {
         public static void Prefix(LuaState __instance)
         {
@@ -19,33 +19,49 @@ namespace SomniumDebugEnabler
             }
         }
     }
+
     [HarmonyPatch(typeof(ScriptManager), "Start")]
-    class LuaOverride
+    internal class LuaOverride
     {
+        internal static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+
+            var code = new List<CodeInstruction>(instructions);
+            for (int i = 0; i < code.Count - 1; i++)
+            {
+                if (code[i].opcode == OpCodes.Ldc_I4_1)
+                {
+
+                    code[i].opcode = OpCodes.Ldc_I4_0;
+                }
+            }
+
+            return code;
+        }
+
         public static void Prefix(LuaState __instance)
         {
             if (DebugEnabler.forceAsset.Value)
             {
-                
+
                 Traverse.Create(__instance).Field("useAssetBundle").SetValue(false);
                 DebugEnabler.logger.Msg("Asset Bundle False");
-                
+
 
             }
         }
+
         public static void Postfix(bool ___useAssetBundle)
         {
             DebugEnabler.logger.Msg(___useAssetBundle);
         }
     }
 
-
     [HarmonyPatch(typeof(LuaState), "setObject", new Type[] {
     typeof (string), typeof (object), typeof (bool), typeof (bool)
   })]
-    class Patch
+    internal class Patch
     {
-
         public static void Prefix(LuaState __instance, string key, ref object v)
         {
             if (key == "UNITY_EDITOR")
@@ -82,41 +98,51 @@ namespace SomniumDebugEnabler
                 foreach (var item in DebugEnabler.Cust.Value.custDict)
                 {
                     int foo;
-                    if(int.TryParse(item.Value, out foo))
+                    if (int.TryParse(item.Value, out foo))
                     {
                         LuaState.main[item.Key] = foo;
                     }
                 }
-                
+
             }
         }
+
         public static void Postfix()
         {
             DebugEnabler.logger.Msg("GONZO!!!!!!!");
         }
-
-
-
     }
+
     public class DebugEnabler : MelonMod
     {
         public static MelonLogger.Instance logger;
+
         public static MelonPreferences_Category overCat;
+
         public static MelonPreferences_Category customCat;
+
         public static MelonPreferences_Entry<int> EDITOR;
+
         public static MelonPreferences_Entry<int> STANDALONE_WIN;
+
         public static MelonPreferences_Entry<int> PS4;
+
         public static MelonPreferences_Entry<int> XBOXONE;
+
         public static MelonPreferences_Entry<int> SWITCH;
+
         public static MelonPreferences_Entry<int> BUILD_RELEASE;
+
         public static MelonPreferences_Entry<string> BUILD_REGION;
+
         public static MelonPreferences_Entry<string> USERNAME;
+
         public static MelonPreferences_Entry<bool> forceAsset;
+
         public static MelonPreferences_Entry<CustomType> Cust;
 
         public class CustomType
         {
-            
             public Dictionary<string, string> custDict = new Dictionary<string, string> { { "DEVELOP_MODE", "1" } };
         }
 
@@ -134,7 +160,7 @@ namespace SomniumDebugEnabler
             BUILD_REGION = overCat.CreateEntry("BUILD_REGION", "BUILD_WORLDWIDE");
             USERNAME = overCat.CreateEntry("USER_NAME", "gonzo");
             forceAsset = overCat.CreateEntry("FORCE_ASSET_BUNDLE", true);
-            Cust = overCat.CreateEntry<CustomType>("CUSTOM_OVERRIDES",new CustomType());
+            Cust = overCat.CreateEntry<CustomType>("CUSTOM_OVERRIDES", new CustomType());
 
             overCat.SaveToFile();
 
