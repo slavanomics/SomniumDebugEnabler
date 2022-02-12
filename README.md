@@ -40,4 +40,6 @@ custDict can be edited to include whatever other variables you want to forcibly 
 
 HUGE THANK YOU TO [@robotortoise](https://github.com/robotortoise) for finding [this in the first place](https://www.reddit.com/r/aithesomniumfiles/comments/sltzx1/i_have_discovered_a_fully_functional_debug_mode/)
 
+Thank you to [@drojf](https://github.com/drojf) for letting me use [his freecam code in this.](https://github.com/drojf/ai_somnium_fps_camera)
+
 another thank you to [@GarnetSunset](https://github.com/GarnetSunset) for coming up with the idea in the first place.
