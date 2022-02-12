@@ -127,10 +127,9 @@
             //public static RootNode inst;
             public void ModPause(RootNode inst)
             {
-                logger.Msg("runmodpause");
                 if(inst == null)
                 {
-                    logger.Warning("FUCK");
+                    logger.Warning("inst is null");
                 }
                 Type rootType = typeof(RootNode);
                 FieldInfo pauseBool = rootType.GetField("pause", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -141,34 +140,28 @@
                 FieldInfo pauseStateObj = rootType.GetField("pauseState", BindingFlags.NonPublic | BindingFlags.Instance);
                 if (pauseStateObj == null)
                 {
-                    logger.Warning("Null Pausebool");
+                    logger.Warning("Null pausestateobj");
                 }
-                logger.Msg("b1");
                 if (!(bool)pauseBool.GetValue(inst))
                 {
-                    logger.Msg("b1");
                     pauseStateObj.SetValue(inst, new RootNode.PauseState());
                     pauseBool.SetValue(inst, true);
                     PauseState pauseStateAcc = (PauseState)pauseStateObj.GetValue(inst);
                     pauseStateAcc.monoBehaviours.Clear();
-                    logger.Msg("b2");
                     //Modified so that the character's eyes and eyelids are frozen, but all other monobehaviors still run
                     foreach (MonoBehaviour monoBehaviour in inst.GetComponentsInChildren<MonoBehaviour>(true))
                     {
-                        logger.Msg("b2");
                         if (monoBehaviour != null && (monoBehaviour.GetType() == typeof(EyeMove) || monoBehaviour.GetType() == typeof(EyeController)) && monoBehaviour.enabled)
                         {
                             monoBehaviour.enabled = false;
                             pauseStateAcc.monoBehaviours.Add(monoBehaviour);
                         }
                     }
-                    logger.Msg("b2");
                     DynamicBone[] componentsInChildren2 = inst.GetComponentsInChildren<DynamicBone>(true);
                     for (int i = 0; i < componentsInChildren2.Length; i++)
                     {
                         componentsInChildren2[i].pause = true;
                     }
-                    logger.Msg("b2");
                     pauseStateAcc.cameras.Clear();
                     foreach (Animator animator in inst.GetComponentsInChildren<Animator>(true))
                     {
@@ -178,7 +171,6 @@
                             pauseStateAcc.animators.Add(animator);
                         }
                     }
-                    logger.Msg("b2");
                     pauseStateAcc.audioSources.Clear();
                     foreach (AudioSource audioSource in inst.GetComponentsInChildren<AudioSource>(true))
                     {
@@ -188,7 +180,6 @@
                             pauseStateAcc.audioSources.Add(audioSource);
                         }
                     }
-                    logger.Msg("b2");
                     pauseStateAcc.customAnimators.Clear();
                     foreach (CustomAnimator customAnimator in inst.GetComponentsInChildren<CustomAnimator>(true))
                     {
@@ -198,7 +189,6 @@
                             pauseStateAcc.customAnimators.Add(customAnimator);
                         }
                     }
-                    logger.Msg("b2");
                     pauseStateAcc.playableDirectors.Clear();
                     foreach (PlayableDirector playableDirector in inst.GetComponentsInChildren<PlayableDirector>(true))
                     {
@@ -221,7 +211,6 @@
                             pauseStateAcc.playableDirectors.Add(playableDirector);
                         }
                     }
-                    logger.Msg("b2");
                     pauseStateAcc.particleSystems.Clear();
                     foreach (ParticleSystem particleSystem in inst.GetComponentsInChildren<ParticleSystem>(true))
                     {
@@ -231,7 +220,6 @@
                             pauseStateAcc.particleSystems.Add(particleSystem);
                         }
                     }
-                    logger.Msg("b2");
                     pauseStateAcc.rigidbodys.Clear();
                     foreach (Rigidbody rigidbody in inst.GetComponentsInChildren<Rigidbody>(true))
                     {
@@ -261,7 +249,6 @@
             public float fieldOfView;
         }
 
-        bool custom_clip;
         bool immediateGUIHidden;
         float rotX;
         float rotY;
