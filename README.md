@@ -36,6 +36,12 @@ Feel free to experiment with these values, currently the only known values to tr
 
 custDict can be edited to include whatever other variables you want to forcibly inject into the script manager.
 
+## Freecam Instructions and Tips
+
+The freecam mode included in this tool adds a "Noclip Mode" FPS style camera allowing you to explore ADV mode scenes and Somniums, plus some other extra features. It is highly recommended you have a glance at the [Freecam Instructions and Tips](docs/freecam-readme.md) page before using the freecam for tips and known issues.
+
+If you're a developer working on the freecam code, check out the [Freecam Developer Readme](docs/freecam-developer-readme.md) first.
+
 ## Credits
 
 HUGE THANK YOU TO [@robotortoise](https://github.com/robotortoise) for finding [this in the first place](https://www.reddit.com/r/aithesomniumfiles/comments/sltzx1/i_have_discovered_a_fully_functional_debug_mode/)
