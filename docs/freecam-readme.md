@@ -88,7 +88,7 @@ These shortcuts are useful when taking screenshots to hide the GUI or slow down 
 - In somniums, the box can be used to lift and push the player around.
 - If the magenta box gets in the way of the camera, hold right click while moving the mouse and you can rotate the camera around the magenta box.
 
-#### Known bugs and wierd behaviors
+#### Known bugs and weird behaviors
 
 As this is a just a hack of the game and a side project for me, some "bugs" might not be worth fixing. I'll state the known bugs below, but might not ever fix them:
 
