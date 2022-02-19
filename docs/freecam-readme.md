@@ -114,4 +114,4 @@ Please report bugs by raising an issue on this github repository. If you don't w
 
 ## Developer's Instructions / Reproduction Instructions
 
-See the [Developer Readme](Developer_Readme.md) for reproduction instructions and various other useful information. You may be able to port the code to other Unity games.
+See the [Developer Readme](freecam-developer-readme.md) for reproduction instructions and various other useful information. You may be able to port the code to other Unity games.
