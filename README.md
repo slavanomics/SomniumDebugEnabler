@@ -38,7 +38,7 @@ custDict can be edited to include whatever other variables you want to forcibly 
 
 ## Freecam Instructions and Tips
 
-The freecam mode included in this tool adds a "Noclip Mode" FPS style camera allowing you to explore ADV mode scenes and Somniums, plus some other extra features. It is highly recommended you have a glance at the [Freecam Instructions and Tips](docs/freecam-readme.md) page before using the freecam for tips and known issues.
+The freecam mode included in this tool adds a "Noclip Mode" FPS style camera allowing you to explore ADV mode scenes and Somniums, plus some other extra features. **It is highly recommended you look at the [Freecam Instructions and Tips](docs/freecam-readme.md) page before using the freecam for tips and known issues.**
 
 If you're a developer working on the freecam code, check out the [Freecam Developer Readme](docs/freecam-developer-readme.md) first.
 

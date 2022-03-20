@@ -14,14 +14,28 @@ This mod adds the following features to the game:
   - (extra feature: the ability to slow down the game by 10x (doesn't work in all scenes))
 - A rudimentary GUI which shows the keyboard shortcuts and which features are enabled.
 
-This mod may be useful for taking screenshots or videos of the game. You can also explore the maps of the game - but note that the game appears to be fairly "clean" - there are a few wierd T-posing/strangely posed characters and such, but overall everything is as expected. I don't recommend your first playthrough have this mod enabled, as various things may break unexpectedly.
+This mod may be useful for taking screenshots or videos of the game. You can also explore the maps of the game - but note that the game appears to be fairly "clean" - there are a few weird T-posing/strangely posed characters and such, but overall everything is as expected. I don't recommend your first playthrough have this mod enabled, as various things may break unexpectedly.
 
 ## Tips from the developer
 
 - Please try out all the major hotkeys (displayed in-game), even if you don't think you'll use them - you might find them handy at some point
-- Please see the "Known bugs and wierd behaviors" section of this page if you have problems with the mod.
+- Please see the "Known bugs and weird behaviors" section of this page if you have problems with the mod.
 - In ADV mode, when you enter FPS mode via the `F8` key, the current state of the cameras is saved, and when you leave with the `F9` key, it is restored. If you enter FPS mode (`F8`) at a bad time (such as during a cinematic), when you hit `F9` you might be restored to a bad state. Therefore, it's best to enter FPS mode when in the "resting" position, although it cannot always be avoided.
 - The base game (without the mod) might have a bug when your FPS is unlocked - it's probably best to enable vsync to make sure the game works correctly.
+
+
+## Known bugs and weird behaviors
+
+Here is a list of known bugs, along with any known workarounds:
+
+| Problem  | Workaround |
+| ------------- | ------------- |
+| Menus disappear in FPS mode |  Press `F9` to disable FPS mode when attempting to navigate menus <br> Press `F10` to toggle GUI hiding, incase you forgot you left it on |
+| The camera may rotate randomly in somniums  | Disable the FPS camera, move a bit, then enable it again. You can also try entering and leaving the main menu.  |
+| The slow-motion modes don't work in some cutscenes | Repeatedly hit the pause/play button `O` to get to the part you want |
+| Cameras don't revert to their original position when you press F9 in a Cinematic scene  | None  |
+| A few scenes look like they're in-game, but they are actually videos. Since it's a video, you cannot move the camera. | None |
+| In somniums, the "choice" buttons and some other GUI are briefly not hidden in "GUI hiding mode" while making the choice | Immediately after making the choice, they go away, so this is not really a problem. |
 
 ## How to Use the Mod / Controls
 
@@ -87,26 +101,6 @@ These shortcuts are useful when taking screenshots to hide the GUI or slow down 
 - You can press `F6` instead of `F8` to enter FPS mode. If you do this, a magenta box will spawn directly underneath the player (it's the standard Unity cube).
 - In somniums, the box can be used to lift and push the player around.
 - If the magenta box gets in the way of the camera, hold right click while moving the mouse and you can rotate the camera around the magenta box.
-
-#### Known bugs and weird behaviors
-
-As this is a just a hack of the game and a side project for me, some "bugs" might not be worth fixing. I'll state the known bugs below, but might not ever fix them:
-
-- Cameras don't revert to their original position when you press F9 while in a Cinematic
-  - Workaround: None
-- The camera may starts rotating randomly in somniums
-  - Workaround: Disable the FPS camera, move a bit, then enable it again. You can also try entering and leaving the main menu.
-- When a new version of the game is released, probably everything will break until a new version of the mod is issued.
-  - Workaround: wait for a new release of the mod
-- A few scenes look like they're in-game, but they are actually videos. Since it's a video, you cannot move the camera.
-  - Workaround: None
-- Menus Disappear in FPS mode
-  - Press `F9` to disable FPS mode when attempting to navigate menus
-  - Press `F10` to toggle GUI hiding, incase you forgot you left it on
-- In somniunms, the "choice" buttons and some other GUI are not hidden while making the choice. Immediately after making the choice, they go away, so this is not really a problem.
-  - Workaround: None
-- The slow-motion modes don't work in some cutscenes
-  - Workaround: Repeatedly hit the pause/play button `O` to get to the part you want
 
 ## Reporting Bugs
 
